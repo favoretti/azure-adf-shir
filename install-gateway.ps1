@@ -31,6 +31,9 @@ param(
   [string]$workd = 'c:\temp' # working directory path
 )
 
+#Prohibit progress printing for downloads. It makes things faster.
+$ProgressPreference = 'SilentlyContinue'
+
 function Download-File([string]$uri, [string]$workd=$script:workd, [string]$msdl_filter, [string]$outFile) {
   # if the download is a microsoft download page - parse it for file permalinks
   if (-not [string]::IsNullOrEmpty($msdl_filter)) {
